@@ -10,8 +10,10 @@
   <ul class="events">
     <li id="{{ event.id }}" ng-repeat="event in events" on-last-repeat infinite-scroll>
       <time>{{ event.display_timestamp }}</time>
-      <span class='host'><a href ng-click="onHostSelected(event.hostname)">{{ event.hostname }}</a></span>
-      <span class='program'><a ng-click="onProgramClick(event.program)">{{ event.program }}:</a></span>
+      <span class='host'><a href ng-click="onItemClick(event.hostname,'hostname')">{{ event.hostname }}</a></span>
+      <span class='program'><a ng-click="onItemClick(event.program,'program')">{{ event.program }}</a></span>
+      <span class='env'><a ng-click="onItemClick(event.env,'env')">{{ event.env }}</a></span>
+      <span class='level'><a ng-click="onItemClick(event.level,'level')">{{ event.level }}:</a></span>
       <span class="message">{{ event.message }}</span>
     </li>
   </ul>

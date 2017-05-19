@@ -8,20 +8,20 @@
       "tail_interval_in_seconds": 10,
       "es_index_time_offset_in_seconds": 0,
       "display_timezone": "local",
-      "display_timestamp_format": "MMM DD HH:mm:ss",
+      "display_timestamp_format": "MMM DD HH:mm:ss.SSS",
       "max_buckets": 500,
-      "nested_objects" : false,
-      "default_time_range_in_days" : 0,
-      "max_hosts": 100,
-      "max_events_to_keep_in_viewer": 5000,
+      "nested_objects" : true,
+      "default_time_range_in_days" : 31,
       "fields" : {
         "mapping" : {
             "timestamp" : "@timestamp",
-            "display_timestamp" : "@timestamp",
-            "hostname" : "hostname",
-            "program": "program",
-            "message": "syslog_message"
-        }
+            "display_timestamp" : "timestamp,@timestamp",
+            "hostname" : "kubernetes.namespace_name",
+            "program": "kubernetes.labels.run,kubernetes.container_name",
+            "level":"level",
+            "message": "message,log"
+        },
+        "message_format": "{{level}} : {{log}}"
       }
     }  
   ]
